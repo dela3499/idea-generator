@@ -1,0 +1,116 @@
+h1 {
+	font-size: 60px;
+	margin: 0;
+}
+
+.red {
+	color: #de4242;
+}
+
+body {
+	font-family:'Arial';
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+}
+
+body * {
+	text-align: left;
+}
+
+.tall {
+	min-height: 600px;
+}
+
+.container {
+	padding: 50px;
+	margin-top: 0;
+	/*padding-bottom: 50px;*/
+	overflow: auto;	
+}
+
+.backrgound-section {
+	width: 100%;
+	overflow: auto;	
+}
+
+.gradient {
+	background: #ff7e5f; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #ff7e5f , #feb47b); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #ff7e5f , #feb47b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */      			
+}
+
+.dark {
+	background: #485563; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #485563 , #29323c); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #485563 , #29323c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */	        
+	color: white;
+}
+
+.light-text {
+	color: white;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.grey {
+	color: #222222;
+}
+
+.results {
+	max-width: 400px;
+}
+
+.chunk {
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.small {
+	font-size: 25px;
+}
+
+.medium {
+	font-size: 35px;
+}
+
+input {
+	background: none;
+}
+
+.margin-top-medium {
+	margin-top: 50px;
+}
+
+h2 {
+	font-size: 30px;
+}
+
+#explanation h2 {
+	color: #fe956b;
+	margin-top: 40px;
+	margin-bottom: 0;
+}
+
+ol {
+  /*list-style: none;*/
+  padding-left: 18px;
+  /*margin: 0;*/
+  /*text-indent: 24px;*/
+}
+
+#mc_embed_signup form {
+	padding: 0 !important;
+	padding-top: 20px !important;
+}
+
+/*input {
+	padding-left: 20px !important;
+}*/
+
+form * {
+	color: white;
+}

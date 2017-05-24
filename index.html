@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Idea Generator</title>
+	<script src="jquery-3.1.1.min.js"></script>
+	<script src="underscore.min.js"></script>
+	<script src="showdown.min.js"></script>
+	<script src="mithril.js"></script>
+	<link rel="stylesheet" type="text/css" href="input.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<!-- input http://codepen.io/sevilayha/pen/IdGKH -->
+<!-- gradient background https://uigradients.com/# -->
+
+<body>
+	<div class="background-section gradient">
+		<div class="container">
+			<div>
+				<div id="progress-container">
+					<div id="prompts">
+						<span id='prompt1'></span>
+						 + 
+						<span id='prompt2'></span>
+					</div>				
+					<div id='progress'></div>
+				</div>
+			</div>
+
+			<div id="input-container">
+			    <div class="group margin-top-medium">      
+			      <input id="input" type="text" required onkeypress="return addIdea(event)">
+			      <span class="highlight"></span>
+			      <span class="bar"></span>
+			      <label>new idea here!</label>
+			    </div>
+			</div>
+		    <div>
+		    	<span># of ideas: </span>
+		    	<span id="count">0</span>
+		    </div>
+
+		</div>
+	</div>
+
+	<div class="background-section">
+		<div class="container">
+			<div id="ideas">
+			</div>	
+		</div>
+	</div>
+
+</body>
+
+<script>
+
+list1 = [
+"Communication",
+"Analysis",
+"Idea generation",
+"Training app",
+"Course",
+"Community",
+"Book",
+"Tool",
+"Tool",
+"Curation",
+"Simplification",
+"Curation",
+"Community",
+"Course",
+"Community",
+"Coaching",
+"Training app",
+"Event",
+"Automation",
+"Automation",
+"Communication",
+"Analysis",
+"Idea generation",
+"Training app",
+"Course",
+"Community",
+"Book",
+"Tool",
+"Tool",
+"Curation",
+"Simplification",
+"Curation",
+"Community",
+"Course",
+"Community",
+"Coaching",
+"Training app",
+"Event",
+"Automation",
+"Automation",
+"Communication",
+"Analysis",
+"Idea generation",
+"Training app",
+"Course",
+"Community",
+"Book",
+"Tool",
+"Tool",
+"Curation",
+"Simplification",
+"Curation",
+"Community",
+"Course",
+"Community",
+"Coaching",
+"Training app",
+"Event",
+"Automation",
+"Automation",
+"Communication",
+"Analysis",
+"Idea generation",
+"Training app",
+]
+
+list2 = [
+"Relationships",
+"Relationships",
+"Relationships",
+"Relationships",
+"Relationships",
+"Relationships",
+"Relationships",
+"Relationships",
+"Relationships",
+"Relationships",
+"Music",
+"Music",
+"Music",
+"Music",
+"Music",
+"Music",
+"Music",
+"Music",
+"Music",
+"Music",
+"Documentary",
+"Documentary",
+"Documentary",
+"Documentary",
+"Documentary",
+"Documentary",
+"Documentary",
+"Documentary",
+"Documentary",
+"Documentary",
+"Absurd",
+"Absurd",
+"Absurd",
+"Absurd",
+"Absurd",
+"Absurd",
+"Absurd",
+"Absurd",
+"Absurd",
+"Absurd",
+"Writing",
+"Writing",
+"Writing",
+"Writing",
+"Writing",
+"Writing",
+"Writing",
+"Writing",
+"Writing",
+"Writing",
+"Curation",
+"Curation",
+"Curation",
+"Curation",
+"Curation",
+"Curation",
+"Curation",
+"Curation",
+"Curation",
+"Curation",
+"Travel",
+"Travel",
+"Travel",
+"Travel",
+"Travel",
+"Travel",
+"Travel",
+"Travel",
+"Travel",
+"Travel",
+"Data",
+"Data",
+"Data",
+"Data",
+"Data",
+"Data",
+"Data",
+"Data",
+"Data",
+"Data",
+"Art",
+"Art",
+"Art",
+"Art",
+"Art",
+"Art",
+"Art",
+"Art",
+"Art",
+"Art",
+"Food",
+"Food",
+"Food",
+"Food",
+"Food",
+"Food",
+"Food",
+"Food",
+"Food",
+"Food",
+"Business",
+"Business",
+"Business",
+"Business",
+"Business",
+"Business",
+"Business",
+"Business",
+"Business",
+"Business",
+]
+
+function pick(items){
+	var item = items[Math.floor(Math.random()*items.length)];
+	return item
+}
+
+function updatePrompt(){
+	$("#prompt1").text(pick(list2))
+	$("#prompt2").text(pick(list1))
+}
+
+var t = 0;
+var switchPeriod = 30000.0;
+var updatePeriod = 10.0;
+
+function updateTime(){
+	t += updatePeriod 
+	if ((t / switchPeriod) > 1) {
+		t = 0
+		updatePrompt();
+	}
+	var progress = ((t / switchPeriod) * 100 )
+	$("#progress").width(progress.toString() + "%")
+}
+
+$("#input").focus()
+updatePrompt();
+setInterval(updateTime, updatePeriod);
+
+function addIdea(e) {
+	var ideas = $("#ideas")
+	var idea = $("#input").val()
+    if (e.keyCode == 13 & idea != "") {
+		var ideaDiv = "<div>" + idea + '</div>'
+		ideas.prepend(ideaDiv)    	
+		$("#input").val("")
+		$("#count").text((ideas.children().length).toString())
+        return false;
+    }
+	
+}
+
+</script>
+
+<style>
+
+#prompts {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background: rgba(255,255,255,0.5);
+	/*margin: 20px;*/
+	width: 100%;
+	text-align: center;
+}
+
+#progress-container {
+	width: 70%;
+	overflow:hidden;
+	border-radius: 5px;
+	border: 1px solid red;
+}
+
+#progress {
+	height: 20px;
+	margin: 4px;
+	box-sizing: border-box;
+	background: red;
+	width: 0%;
+	border-radius: 3px;
+	opacity: .3;
+}
+
+
+</style>
