@@ -45,8 +45,8 @@
 
 	<div class="background-section">
 		<div class="container">
-			<div id="ideas">
-			</div>	
+			<table id="ideas">
+			</table>	
 		</div>
 	</div>
 
@@ -55,183 +55,34 @@
 <script>
 
 list1 = [
-"Communication",
-"Analysis",
-"Idea generation",
-"Training app",
-"Course",
-"Community",
-"Book",
-"Tool",
-"Tool",
-"Curation",
-"Simplification",
-"Curation",
-"Community",
-"Course",
-"Community",
-"Coaching",
-"Training app",
-"Event",
-"Automation",
-"Automation",
-"Communication",
-"Analysis",
-"Idea generation",
-"Training app",
-"Course",
-"Community",
-"Book",
-"Tool",
-"Tool",
-"Curation",
-"Simplification",
-"Curation",
-"Community",
-"Course",
-"Community",
-"Coaching",
-"Training app",
-"Event",
-"Automation",
-"Automation",
-"Communication",
-"Analysis",
-"Idea generation",
-"Training app",
-"Course",
-"Community",
-"Book",
-"Tool",
-"Tool",
-"Curation",
-"Simplification",
-"Curation",
-"Community",
-"Course",
-"Community",
-"Coaching",
-"Training app",
-"Event",
-"Automation",
-"Automation",
-"Communication",
-"Analysis",
-"Idea generation",
-"Training app",
+ 'Idea generation',
+ 'Simplification',
+ 'Communication',
+ 'Tool',
+ 'Community',
+ 'Automation',
+ 'Course',
+ 'Coaching',
+ 'Book',
+ 'Analysis',
+ 'Curation',
+ 'Event',
+ 'Training app'
 ]
 
+
 list2 = [
-"Relationships",
-"Relationships",
-"Relationships",
-"Relationships",
-"Relationships",
-"Relationships",
-"Relationships",
-"Relationships",
-"Relationships",
-"Relationships",
-"Music",
-"Music",
-"Music",
-"Music",
-"Music",
-"Music",
-"Music",
-"Music",
-"Music",
-"Music",
-"Documentary",
-"Documentary",
-"Documentary",
-"Documentary",
-"Documentary",
-"Documentary",
-"Documentary",
-"Documentary",
-"Documentary",
-"Documentary",
-"Absurd",
-"Absurd",
-"Absurd",
-"Absurd",
-"Absurd",
-"Absurd",
-"Absurd",
-"Absurd",
-"Absurd",
-"Absurd",
-"Writing",
-"Writing",
-"Writing",
-"Writing",
-"Writing",
-"Writing",
-"Writing",
-"Writing",
-"Writing",
-"Writing",
-"Curation",
-"Curation",
-"Curation",
-"Curation",
-"Curation",
-"Curation",
-"Curation",
-"Curation",
-"Curation",
-"Curation",
-"Travel",
-"Travel",
-"Travel",
-"Travel",
-"Travel",
-"Travel",
-"Travel",
-"Travel",
-"Travel",
-"Travel",
-"Data",
-"Data",
-"Data",
-"Data",
-"Data",
-"Data",
-"Data",
-"Data",
-"Data",
-"Data",
-"Art",
-"Art",
-"Art",
-"Art",
-"Art",
-"Art",
-"Art",
-"Art",
-"Art",
-"Art",
-"Food",
-"Food",
-"Food",
-"Food",
-"Food",
-"Food",
-"Food",
-"Food",
-"Food",
-"Food",
-"Business",
-"Business",
-"Business",
-"Business",
-"Business",
-"Business",
-"Business",
-"Business",
-"Business",
-"Business",
+	"Relationships",
+	"Music",
+	"Documentary",
+	"Absurd",
+	"Writing",
+	"Curation",
+	"Travel",
+	"Data",
+	"Art",
+	"Food",
+	"Business"
 ]
 
 function pick(items){
@@ -263,10 +114,13 @@ updatePrompt();
 setInterval(updateTime, updatePeriod);
 
 function addIdea(e) {
-	var ideas = $("#ideas")
-	var idea = $("#input").val()
+	var ideas = $("#ideas");
+	var idea = $("#input").val();
+	var prompt1 = $("#prompt1").text();
+	var prompt2 = $("#prompt2").text();
+
     if (e.keyCode == 13 & idea != "") {
-		var ideaDiv = "<div>" + idea + '</div>'
+		var ideaDiv = "<tr><td class='prompt-cell'>" + prompt1 + " + " + prompt2 + "</td><td class='idea-cell'>" + idea + "<td></tr>"
 		ideas.prepend(ideaDiv)    	
 		$("#input").val("")
 		$("#count").text((ideas.children().length).toString())
@@ -305,5 +159,13 @@ function addIdea(e) {
 	opacity: .3;
 }
 
+.prompt-cell {
+	color: grey;
+}
+
+.idea-cell {
+	padding-left: 20px;
+	/*background: red;*/
+} 
 
 </style>
